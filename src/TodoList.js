@@ -5,10 +5,7 @@ import TodoForm from './TodoForm'
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [
-      {task: 'do 1'},
-      {task: 'do 2'}
-    ] };
+    this.state = { todos: [] };
   }
 
   createTask = (newTask) => {
@@ -17,11 +14,21 @@ class TodoList extends Component {
     });
   } 
 
+  removeTask = (id) => {
+    this.setState({
+      todos: this.state.todos.filter(todo => (
+        todo.id !== id
+      ))
+    });
+  }
+
   render() {
-    const todos = this.state.todos.map((todo, index) => (
+    const todos = this.state.todos.map((todo) => (
       <Todo 
-        key={index}
+        key={todo.id}
         task={todo.task}
+        removeTask={this.removeTask}
+        id={todo.id}
       />
     ));
     return (
