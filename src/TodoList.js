@@ -9,6 +9,8 @@ class TodoList extends Component {
   }
 
   createTask = (newTask) => {
+    // newTask = { task: "lalala", id: "123", isCompleted: false }
+    // ALWAYS the property isCompleted: false !!!
     this.setState({
       todos: [...this.state.todos, newTask ]
     });
@@ -33,6 +35,17 @@ class TodoList extends Component {
     this.setState({ todos: updatedTodos });
   }
 
+  toggleTaskCompletion = (id) => {
+    const completedTodos = this.state.todos.map(todo => {
+      if(todo.id === id) {
+        return {...todo, isCompleted: !todo.isCompleted };
+      } else {
+        return todo;
+      }
+    });
+    this.setState({ todos: completedTodos });
+  }
+
   render() {
     const todos = this.state.todos.map((todo) => (
       <Todo 
@@ -41,6 +54,8 @@ class TodoList extends Component {
         removeTask={this.removeTask}
         id={todo.id}
         updateTask={this.updateTask}
+        completed={todo.isCompleted}
+        completedTask={this.toggleTaskCompletion}
       />
     ));
     return (
