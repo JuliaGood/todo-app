@@ -1,5 +1,30 @@
-.completed {
-  color: gray;
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  background: rgba(000, 000 , 000, 0.02);
+  border-bottom: 1px solid pink;
+}
+
+.Todo-task.completed {
+  opacity: 0.6;
   text-decoration: line-through;
   cursor: pointer;
+}
+
+.Todo-btns {
+  flex-shrink: 0;
+  padding-left: 0.7em;
+}
+
+.Todo-btns button {
+  border: none;
+  font-size: 1em;
+  margin: 0.4em;
+  background: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color:darkviolet;
 }

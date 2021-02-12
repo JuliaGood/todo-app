@@ -1,0 +1,38 @@
+.TodoForm {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  outline: none;
+}
+.TodoForm label {
+  min-width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+.TodoForm input {
+  flex-grow: 1;
+  background: white;
+  padding: 0 1.5em;
+  font-size: initial;
+}
+.TodoForm button {
+  padding: 0 1.3rem;
+  border: none;
+  background: plum;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid rgba(000, 000, 000, 0.3);
+  margin-left: 5px;
+  cursor: pointer;
+}
+.TodoForm button:hover {
+  background: #b93ef7;
+}
+.TodoForm input,
+.TodoForm button {
+  font-family: sans-serif;
+  height: 3rem;
+  border-radius: 3px;
+  border: none;
+}
