@@ -10,12 +10,14 @@
 
 .todo-list h1 {
   background: -webkit-linear-gradient(#05CCF9, #FF18FF);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: normal;
   letter-spacing: 0.05em;
   border-bottom: 1px solid rgba(225, 109, 238, 0.69);
 }
+
 .todo-list > div {
   margin-top: 2.5rem;
 }

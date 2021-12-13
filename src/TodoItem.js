@@ -47,7 +47,7 @@ class TodoItem extends Component {
         <div className="todo">
           <form onSubmit={this.handleUpdate} className="todo-form">
             <input
-              type='text'
+              type="text"
               name="task"
               value={this.state.task}
               onChange={this.editingChange}
@@ -73,7 +73,6 @@ class TodoItem extends Component {
               <i className="fas fa-trash" />
             </button>
           </div>
-
         </div>
       );
     }
