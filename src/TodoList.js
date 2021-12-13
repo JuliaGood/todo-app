@@ -29,7 +29,7 @@ class TodoList extends Component {
     if (todos) {
       this.setState({
         todos: todos
-      })
+      });
     }
   }
 
@@ -43,23 +43,15 @@ class TodoList extends Component {
 
   createTask = (newTask) => {
     // newTask = { task: "task1", id: "id1", isCompleted: false }
-    let updatedTodos = [...this.state.todos, newTask];
-    this.setState({
-      todos: updatedTodos
-    }, () => {
-      this.saveToLocalStorage(updatedTodos);
-    });
+    const updatedTodos = [...this.state.todos, newTask];
+    this.updateTodosInState(updatedTodos);
   }
 
   removeTask = (id) => {
-    let updatedTodos = this.state.todos.filter((todo) => (
-      todo.id !== id
-    ))
-    this.setState({
-      todos: updatedTodos
-    }, () => {
-      this.saveToLocalStorage(updatedTodos);
+    const updatedTodos = this.state.todos.filter((todo) => {
+      return todo.id !== id;
     });
+    this.updateTodosInState(updatedTodos);
   }
 
   updateTask = (id, updatedTask) => {
@@ -70,11 +62,7 @@ class TodoList extends Component {
         return todo;
       }
     });
-    this.setState({ 
-      todos: updatedTodos
-    }, () => {
-      this.saveToLocalStorage(updatedTodos);
-    });
+    this.updateTodosInState(updatedTodos);
   }
 
   toggleTaskCompletion = (id) => {
@@ -85,6 +73,10 @@ class TodoList extends Component {
         return todo;
       }
     });
+    this.updateTodosInState(updatedTodos);
+  }
+
+  updateTodosInState = (updatedTodos) => {
     this.setState({ 
       todos: updatedTodos
     }, () => {
@@ -98,14 +90,14 @@ class TodoList extends Component {
 
   render() {
     const todos = this.state.todos.map((todo) => (
-        <TodoItem
-          task={todo.task}
-          removeTask={this.removeTask}
-          id={todo.id}
-          updateTask={this.updateTask}
-          completed={todo.isCompleted}
-          completedTask={this.toggleTaskCompletion}
-        />
+      <TodoItem
+        task={todo.task}
+        removeTask={this.removeTask}
+        id={todo.id}
+        updateTask={this.updateTask}
+        completed={todo.isCompleted}
+        completedTask={this.toggleTaskCompletion}
+      />
     ));
 
     return (

@@ -15,14 +15,14 @@ class TodoItem extends Component {
   }
 
   toggleForm = () => {
-    this.setState({ isEditing: !this.state.isEditing })
+    this.setState({ isEditing: !this.state.isEditing });
   }
 
   handleUpdate = (e) => {
     e.preventDefault();
     // take new task data and pass up to parent
     this.props.updateTask(this.props.id, this.state.task);
-    this.setState({ isEditing: false })
+    this.setState({ isEditing: false });
   }
 
   editingChange = (e) => {
@@ -33,6 +33,12 @@ class TodoItem extends Component {
 
   toggleTask = () => {
     this.props.completedTask(this.props.id);
+  }
+
+  componentDidUpdate() {
+    if (!this.state.isEditing && this.state.task !== this.props.task) {
+      this.setState({ task: this.props.task });
+    } 
   }
 
   render() {
