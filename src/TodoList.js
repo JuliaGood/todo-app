@@ -1,32 +1,49 @@
-import React, { Component } from "react";
-import Todo from './Todo';
-import TodoForm from './TodoForm'
-import './TodoList.css';
+import React, { Component } from 'react';
+import TodoItem from './TodoItem';
+import TodoForm from './TodoForm';
+import './todoList.css';
 
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [] };
+    this.state = { 
+      todos: []
+    };
+  }
+
+  componentDidMount() {
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    if (todos) {
+      this.setState({
+        todos: todos
+      })
+    }
   }
 
   createTask = (newTask) => {
-    // newTask = { task: "lalala", id: "123", isCompleted: false }
-    // ALWAYS the property isCompleted: false !!!
+    // newTask = { task: "task1", id: "id1", isCompleted: false }
+    let updatedTodos = [...this.state.todos, newTask ];
     this.setState({
-      todos: [...this.state.todos, newTask ]
+      todos: updatedTodos
+    }, () => {
+      this.saveToLocalStorage(updatedTodos);
     });
   } 
 
+  saveToLocalStorage(todos) {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
   removeTask = (id) => {
     this.setState({
-      todos: this.state.todos.filter(todo => (
+      todos: this.state.todos.filter((todo) => (
         todo.id !== id
       ))
     });
   }
 
   updateTask = (id, updatedTask) => {
-    const updatedTodos = this.state.todos.map(todo => {
+    const updatedTodos = this.state.todos.map((todo) => {
       if(todo.id === id) {
         return {...todo, task: updatedTask };
       } else {
@@ -37,7 +54,7 @@ class TodoList extends Component {
   }
 
   toggleTaskCompletion = (id) => {
-    const completedTodos = this.state.todos.map(todo => {
+    const completedTodos = this.state.todos.map((todo) => {
       if(todo.id === id) {
         return {...todo, isCompleted: !todo.isCompleted };
       } else {
@@ -49,7 +66,7 @@ class TodoList extends Component {
 
   render() {
     const todos = this.state.todos.map((todo) => (
-      <Todo 
+      <TodoItem 
         key={todo.id}
         task={todo.task}
         removeTask={this.removeTask}
@@ -59,8 +76,9 @@ class TodoList extends Component {
         completedTask={this.toggleTaskCompletion}
       />
     ));
+
     return (
-      <div className="TodoList">
+      <div className="todo-list">
         <h1>Todo List</h1>
         <TodoForm createTask={this.createTask}/>
         <ul>{todos}</ul>

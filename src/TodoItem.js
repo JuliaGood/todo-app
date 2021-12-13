@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import './Todo.css';
+import React, { Component } from 'react';
+import './todoItem.css';
 
-class Todo extends Component {
+class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class Todo extends Component {
   toggleForm = () => {
     this.setState({ isEditing: !this.state.isEditing })
   }
- 
+
   handleUpdate = (e) => {
     e.preventDefault();
     // take new task data and pass up to parent
@@ -36,43 +36,42 @@ class Todo extends Component {
   }
 
   render() {
-    let result;
-    if(this.state.isEditing) {
-      result = (
-        <div className="Todo">
-          <form onSubmit={this.handleUpdate} className='TodoForm'>
-            <input 
+    if (this.state.isEditing) {
+      return (
+        <div className="todo">
+          <form onSubmit={this.handleUpdate} className="todo-form">
+            <input
               type='text'
               name="task"
               value={this.state.task}
               onChange={this.editingChange}
+              autoComplete="off"
             />
             <button>Save</button>
           </form>
         </div>
       )
     } else {
-    result = (
-      <div className="Todo">
-        <li className={this.props.completed ? 'Todo-task completed' : 'Todo-task'}
-          onClick={this.toggleTask}
-        >
-          {this.props.task}
-        </li>
-        <div className='Todo-btns'>
-          <button onClick={this.toggleForm}>
-            <i className='fas fa-pen' />
-          </button>
-          <button onClick={this.handleRemove}>
-          <i className='fas fa-trash' />
-          </button>
-        </div>
+      return (
+        <div className="todo">
+          <li className={this.props.completed ? "todo-task completed" : "todo-task"}
+            onClick={this.toggleTask}
+          >
+            {this.props.task}
+          </li>
+          <div className="todo-btns">
+            <button onClick={this.toggleForm}>
+              <i className="fas fa-pen" />
+            </button>
+            <button onClick={this.handleRemove}>
+              <i className="fas fa-trash" />
+            </button>
+          </div>
 
-      </div>
-    );
+        </div>
+      );
     }
-    return result;
   }
 }
 
-export default Todo;
+export default TodoItem;

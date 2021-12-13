@@ -1,4 +1,4 @@
-.Todo {
+.todo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,23 +8,30 @@
   border-bottom: 1px solid pink;
 }
 
-.Todo-task.completed {
-  opacity: 0.6;
-  text-decoration: line-through;
+.todo-task {
   cursor: pointer;
 }
 
-.Todo-btns {
+.todo-task.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.todo-btns {
   flex-shrink: 0;
   padding-left: 0.7em;
 }
 
-.Todo-btns button {
+.todo-btns button {
   border: none;
   font-size: 1em;
   margin: 0.4em;
   background: none;
   -webkit-appearance: none;
   cursor: pointer;
-  color:darkviolet;
+  color: #b93ef7;
+}
+
+.todo-btns button:hover {
+  color: #cc75f8;
 }

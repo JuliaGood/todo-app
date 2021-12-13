@@ -1,24 +1,25 @@
-.TodoForm {
+.todo-form {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   outline: none;
+  width: 100%;
 }
-.TodoForm label {
+.todo-form label {
   min-width: 100%;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }
-.TodoForm input {
+.todo-form input {
   flex-grow: 1;
   background: white;
   padding: 0 1.5em;
   font-size: initial;
 }
-.TodoForm button {
+.todo-form button {
   padding: 0 1.3rem;
   border: none;
-  background: plum;
+  background: #b93ef7;
   color: white;
   text-transform: uppercase;
   font-weight: bold;
@@ -26,13 +27,17 @@
   margin-left: 5px;
   cursor: pointer;
 }
-.TodoForm button:hover {
-  background: #b93ef7;
+.todo-form button:hover {
+  background: #cc75f8;
 }
-.TodoForm input,
-.TodoForm button {
+.todo-form input,
+.todo-form button {
   font-family: sans-serif;
   height: 3rem;
   border-radius: 3px;
   border: none;
+}
+
+::placeholder {
+  color: lightgray;
 }

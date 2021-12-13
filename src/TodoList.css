@@ -1,22 +1,22 @@
-.TodoList {
+.todo-list {
   margin: 4rem auto;
   padding: 2rem 3rem;
   max-width: 500px;
   background: whitesmoke;
   color: #b93ef7;
   box-shadow: 15px 10px 10px 5px rgba(100, 100, 100, 0.1);
-  border-radius: 5px;
+  border-radius: 25px;
 }
 
-.TodoList h1 {
-    background: -webkit-linear-gradient(#05CCF9, #FF18FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid rgba(225, 109, 238, 0.69);
+.todo-list h1 {
+  background: -webkit-linear-gradient(#05CCF9, #FF18FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(225, 109, 238, 0.69);
 }
-.TodoList ul {
+.todo-list ul {
   margin-top: 2.5rem;
   list-style: none;
 }
