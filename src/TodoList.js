@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import {arrayMoveImmutable} from 'array-move';
-import './todoList.css';
+import './TodoList.css';
 
 const SortableItem = SortableElement(({ todo }) => todo);
 const SortableList = SortableContainer(({ todos }) => {
